@@ -1,0 +1,28 @@
+{
+  "name": "fabulous-todos",
+  "version": "0.0.0",
+  "homepage": "https://github.com/briancavalier/fabulous-todos",
+  "authors": [
+    "Brian Cavalier <brian@hovercraftstudios.com>"
+  ],
+  "main": "main.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "fabulous": "briancavalier/fabulous",
+    "jiff": "cujojs/jiff#master",
+    "rave": "~0.3",
+    "rest": "^1.1.1",
+    "when": "~3.4",
+    "most": "~0.5.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

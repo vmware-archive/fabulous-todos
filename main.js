@@ -1,20 +1,23 @@
 var fab = require('fabulous');
 var rest = require('fabulous/rest');
-var Sync = require('fabulous/data/Sync');
-var Observer = require('fabulous/data/Observer');
-var PatchClient = require('fabulous/data/PatchClient');
-//var DSClient = require('fabulous/data/DSClient');
-//var RestClient = require('fabulous/data/RestClient');
+var Document = require('fabulous/Document');
+var History = require('fabulous/data/History');
 
 var TodosController = require('./TodosController');
 
 exports.main = fab.run(document.body, todosApp);
 
 function todosApp(node, context) {
-	context.controller = new TodosController([]);
+	var remote = rest.at('/todos');
 
-	new Sync([
-		new PatchClient(rest.at('/todos')),
-		Observer.fromProperty('todos', context.controller)
-	], 1000).run(context.scheduler);
+	context.controller = new TodosController([]);
+	context.history = new History();
+
+	Document.sync([
+		Document.fromPatchRemote(function(patch) {
+			return remote.patch({ entity: patch });
+		}, remote.get()),
+		Document.fromProperty('todos', context.controller),
+		context.history
+	]);
 }
