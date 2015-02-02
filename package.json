@@ -10,11 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "fabulous": "briancavalier/fabulous",
-    "jiff": "cujojs/jiff#master",
-    "rest": "^1.1.1",
-    "when": "~3.4",
-    "express": "~4.5",
-    "express-session": "~1.6",
-    "body-parser": "~1.4"
+    "rave": "^0.4.3"
   }
 }
